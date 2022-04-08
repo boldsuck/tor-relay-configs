@@ -1,7 +1,7 @@
 # 10 Gigabit Ethernet tweaks
 
-I use network cards with Intel controller 82599 like Fujitsu D2755-A11 and Intel X520-DA2 Dual Port FC 10GbE SFP+.  
-Old but has stable drivers (ixgbe) for most operating systems.  
+I use network cards with Intel controller 82599, they are old, but have stable drivers (ixgbe) for most operating systems.  
+Fujitsu D2755-A11 and Intel X520-DA2 Dual Port FC 10GbE SFP+  
 
 Performance Tuning Tips from:
 
@@ -17,10 +17,11 @@ syslog was flooded with:
 ixgbe 0000:04:00.1 enp4s0f1: Detected Tx Unit Hang
 ixgbe 0000:04:00.1 enp4s0f1: initiating reset due to tx timeout
 ```
-
+These 3 failures can be seen on nusenu's OrNetStats. October 2021 https://nusenu.github.io/OrNetStats/for-privacy.net.html  
+<br>
 Sollution:  
-Disable virtualization (IOMMU, Intel VT-d, AMD-Vi, SR-IOV) options in BIOS / (U)EFI  
-or use kernel boot option (intel_iommu=off, amd_iommu=off)  
+Disable virtualization options in BIOS / (U)EFI (IOMMU, Intel VT-d, AMD-Vi, SR-IOV) or  
+use kernel boot option (intel_iommu=off, amd_iommu=off)  
 
 
 * Install ethtool and disable GRO, TSO, GSO offloading in:
